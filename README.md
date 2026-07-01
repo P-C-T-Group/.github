@@ -1,2 +1,5 @@
-# .github
-A profile for ourself.
+## .github Repo
+
+这是一个特殊的存储库，这里的文档会被展示为组织的个人简介。
+
+这就睡它存在于此的意义。
