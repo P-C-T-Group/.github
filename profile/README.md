@@ -3,7 +3,6 @@
 </div>
 
 <br/>
- <center>物化技小组 · Physics, Chemistry &amp; Technology Group</center>
 
 <div align="center">
 
