@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>物化技小组 · P.C.T.G.</title>
+
+  <!-- Devicon CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f8fa;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --text-dim: #656d76;
+      --accent: #0969da;
+      --accent-green: #1a7f37;
+      --accent-orange: #9a6700;
+      --accent-red: #cf222e;
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* ── Banner ─────────────────────────────── */
+    .banner {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Container ─────────────────────────────── */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ── Badge Row ─────────────────────────────── */
+    .badge-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 32px 0 40px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .badge:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+
+    .badge-web     { background: #1f6feb; color: #fff; }
+    .badge-email   { background: #da3633; color: #fff; }
+    .badge-members { background: #238636; color: #fff; }
+
+    /* ── Section ─────────────────────────────── */
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    p {
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    strong { color: var(--text); }
+
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* ── Tech Table ─────────────────────────────── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .tech-cell {
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 8px;
+      gap: 10px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .tech-cell:hover { background: #eaeef2; }
+    .tech-cell img { width: 40px; height: 40px; }
+    .tech-cell i  { font-size: 40px; }
+    .tech-cell b   { font-size: 13px; font-weight: 600; }
+    .tech-cell .tech-label { font-size: 13px; font-weight: 600; color: var(--text); }
+
+    @media (max-width: 560px) {
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── Frontier Cards ─────────────────────────────── */
+    .frontier-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .frontier-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      transition: border-color 0.2s;
+    }
+    .frontier-card:hover { border-color: var(--accent); }
+    .frontier-card .name { font-weight: 700; color: var(--accent-orange); }
+    .frontier-card .desc { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+
+    /* ── Values ─────────────────────────────── */
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .value-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .value-card .icon { font-size: 28px; margin-bottom: 8px; }
+    .value-card .title { font-weight: 700; margin-bottom: 4px; }
+    .value-card .sub  { font-size: 13px; color: var(--text-dim); }
+
+    /* ── Links ─────────────────────────────── */
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.15s;
+    }
+    .link-item:hover { opacity: 0.75; }
+
+    /* ── Footer ─────────────────────────────── */
+    footer {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <img
+    class="banner"
+    src="https://raw.githubusercontent.com/P-C-T-Group/.github/main/profile/banner.png"
+    alt="PCT Group Banner"
+  />
+
+  <div class="container">
+
+    <!-- Badges -->
+    <div class="badge-row">
+      <a class="badge badge-web" href="https://whj.zdeweb.cn" target="_blank" rel="noopener">
+        🌐 whj.zdeweb.cn
+      </a>
+      <a class="badge badge-email" href="mailto:pctgroup@163.com">
+        ✉️ pctgroup@163.com
+      </a>
+      <span class="badge badge-members">
+        👥 7 Members
+      </span>
+    </div>
+
+    <!-- 关于我们 -->
+    <section>
+      <h2>📖 关于我们</h2>
+      <p>
+        物化技小组（Physics Chemistry and Technology Group,
+        <strong>P.C.T.G.</strong>）由河北涿州中学学子于
+        <strong>2026年1月</strong> 创立，从最初的 3 位成员发展到如今的
+        <strong>7 人团队</strong>。我们不甘于千篇一律的高中生活——在刷题与考试的间隙，选择用代码与世界对话，用创意为青春留下独特的注脚。
+      </p>
+      <p>
+        小组的名字来自河北新高考的选科规则，我们想在&ldquo;物化生&rdquo;的&ldquo;主业&rdquo;之外，让日子更有趣些。
+      </p>
+      <blockquote>
+        &ldquo;学习信息技术，创造美好生活。&rdquo;
+      </blockquote>
+    </section>
+
+    <!-- 技术雷达 -->
+    <section>
+      <h2>🧠 技术雷达</h2>
+      <p>我们探索的方向，也是我们对未来的想象：</p>
+
+      <div class="tech-grid">
+        <div class="tech-cell">
+          <i class="devicon-python-plain colored"></i>
+          <b>Python</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-cplusplus-plain colored"></i>
+          <b>C / C++</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-html5-plain colored"></i>
+          <b>HTML / CSS / JS</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-git-plain colored"></i>
+          <b>Git</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-linux-plain"></i>
+          <b>Linux</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-arduino-plain colored"></i>
+          <b>Arduino</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-unity-original colored"></i>
+          <b>Unity</b>
+        </div>
+        <div class="tech-cell">
+          <i class="devicon-swift-plain colored"></i>
+          <b>Swift</b>
+        </div>
+      </div>
+
+      <!-- 前沿探索 -->
+      <h2 style="margin-top:36px;">✨ 前沿探索</h2>
+      <div class="frontier-list">
+        <div class="frontier-card">
+          <div class="name">Ollama</div>
+          <div class="desc">本地大语言模型部署</div>
+        </div>
+        <div class="frontier-card">
+          <div class="name">GPT-SoVITS</div>
+          <div class="desc">本地语音合成</div>
+        </div>
+        <div class="frontier-card">
+          <div class="name">Stable-Diffusion</div>
+          <div class="desc">本地图像生成</div>
+        </div>
+        <div class="frontier-card">
+          <div class="name">Apple Software</div>
+          <div class="desc">跨生态应用开发</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 理念 -->
+    <section>
+      <h2>🎯 理念</h2>
+      <blockquote>
+        我们希望在学习之余，通过技术把自己的想法变成现实——不只为高考，更为热爱。
+      </blockquote>
+      <p>我们相信：</p>
+      <div class="values">
+        <div class="value-card">
+          <div class="icon">🌍</div>
+          <div class="title">技术无边界</div>
+          <div class="sub">高中不是创造力的终点，而是起点</div>
+        </div>
+        <div class="value-card">
+          <div class="icon">🛠️</div>
+          <div class="title">动手即学习</div>
+          <div class="sub">每一个项目都是最好的老师</div>
+        </div>
+        <div class="value-card">
+          <div class="icon">🤝</div>
+          <div class="title">开放与协作</div>
+          <div class="sub">代码开源，思想共享，共同成长</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 加入我们 -->
+    <section>
+      <h2>🤝 加入我们</h2>
+      <p>对技术充满好奇，想要在高中阶段做一些不一样的事情——</p>
+      <div class="links">
+        <a class="link-item" href="https://whj.zdeweb.cn" target="_blank" rel="noopener">
+          🌐 官网
+        </a>
+        <a class="link-item" href="mailto:pctgroup@163.com">
+          📮 pctgroup@163.com
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2026 Physics Chemistry and Technology Group &middot;
+      Hebei Zhuozhou High School
+    </footer>
+
+  </div>
+
+</body>
+</html>
